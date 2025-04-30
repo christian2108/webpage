@@ -1,14 +1,15 @@
-```html
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Bienvenido a Google</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             text-align: center;
             padding-top: 100px;
-            background-color: #fff;
+            background: linear-gradient(to bottom, #f8f9fa, #e8eaed);
+            margin: 0;
         }
         .logo {
             margin-bottom: 20px;
@@ -16,6 +17,11 @@
         .logo span {
             font-size: 70px;
             font-weight: bold;
+            display: inline-block;
+            transition: transform 0.2s ease-in-out;
+        }
+        .logo span:hover {
+            transform: scale(1.1);
         }
         .logo .g { color: #4285f4; }
         .logo .o1 { color: #ea4335; }
@@ -24,35 +30,52 @@
         .logo .l { color: #34a853; }
         .logo .e { color: #ea4335; }
         h1 {
-            color: #5f6368;
-            font-size: 24px;
+            color: #202124;
+            font-size: 26px;
             margin-bottom: 30px;
         }
         .search-box {
-            width: 500px;
+            width: 90%;
+            max-width: 500px;
             padding: 14px 20px;
             border: 1px solid #dfe1e5;
             border-radius: 24px;
             font-size: 16px;
             outline: none;
             margin-bottom: 20px;
+            transition: box-shadow 0.3s ease;
         }
         .search-box:hover, .search-box:focus {
-            box-shadow: 0 1px 6px rgba(32,33,36,.28);
+            box-shadow: 0 2px 6px rgba(32,33,36,0.3);
         }
         .button {
             background-color: #f8f9fa;
             border: 1px solid #f8f9fa;
-            border-radius: 4px;
+            border-radius: 24px;
             color: #3c4043;
             font-size: 14px;
             margin: 0 5px;
-            padding: 10px 16px;
+            padding: 10px 20px;
             cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .button:hover {
-            box-shadow: 0 1px 1px rgba(0,0,0,.1);
-            border: 1px solid #dadce0;
+            background-color: #dadce0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .button:active {
+            background-color: #bdc1c6;
+        }
+        @media (max-width: 600px) {
+            .logo span {
+                font-size: 50px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            .search-box {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -78,5 +101,4 @@
     </div>
 </body>
 </html>
-```
 
