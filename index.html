@@ -3,44 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Cars</title>
+    <title>Frases Bélicas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f2f2f2;
+            background-color: #1a1a1a;
+            color: #ffffff;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-
+        .container {
+            text-align: center;
+        }
         h1 {
-            font-size: 3rem;
-            color: #4285F4; /* Azul de Google */
-            text-shadow: 2px 2px #FF0000; /* Rojo estilo Cars */
+            color: #ff4500;
         }
-
-        .button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            color: white;
-            background: linear-gradient(to right, #FF0000, #FFA500);
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .button:hover {
-            background: linear-gradient(to right, #FFA500, #FF0000);
+        .phrase {
+            font-style: italic;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-    <h1>Google Cars</h1>
-    <form action="https://www.google.com/search" method="GET">
-        <input type="hidden" name="q" value="juegos google letras de cars">
-        <button class="button" type="submit">Buscar "Juegos Google"</button>
-    </form>
+    <div class="container">
+        <h1>Frases Bélicas</h1>
+        <p class="phrase">"Si vis pacem, para bellum." <br> <small>- Flavio Vegecio</small></p>
+        <p class="phrase">"El coraje es la primera de las cualidades humanas, porque es la cualidad que garantiza todas las demás." <br> <small>- Winston Churchill</small></p>
+        <p class="phrase">"No hay nada más poderoso que una idea cuyo momento ha llegado." <br> <small>- Victor Hugo</small></p>
+        <p class="phrase">"El arte supremo de la guerra es someter al enemigo sin luchar." <br> <small>- Sun Tzu</small></p>
+    </div>
 </body>
 </html>
+           
