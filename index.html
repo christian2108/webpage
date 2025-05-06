@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +17,7 @@
             font-weight: bold;
         }
         .logo .g { color: blue; }
-        .logo .o1 { color:red; }
+        .logo .o1 { color: red; }
         .logo .o2 { color: black; }
         .logo .g2 { color: orange; }
         .logo .l { color: pink; }
@@ -54,6 +53,11 @@
             box-shadow: 0 1px 1px rgba(0,0,0,.1);
             border: 1px solid #dadce0;
         }
+        #visit-counter {
+            margin-top: 40px;
+            font-size: 18px;
+            color: gray;
+        }
     </style>
 </head>
 <body>
@@ -76,6 +80,28 @@
         <button class="button">Buscar con Google</button>
         <button class="button">Voy a tener suerte</button>
     </div>
+
+    <div id="visit-counter">
+        Esta página ha sido visitada <span id="counter">0</span> veces.
+    </div>
+
+    <script>
+        // Obtener el contador actual desde el almacenamiento local
+        let visitCount = localStorage.getItem('visitCount');
+
+        // Si no existe, inicializarlo a 0
+        if (!visitCount) {
+            visitCount = 0;
+        }
+
+        // Incrementar el contador
+        visitCount++;
+
+        // Guardar el contador actualizado en el almacenamiento local
+        localStorage.setItem('visitCount', visitCount);
+
+        // Mostrar el contador en la página
+        document.getElementById('counter').innerText = visitCount;
+    </script>
 </body>
 </html>
-```
