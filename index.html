@@ -1,61 +1,81 @@
+```html
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frases Motivadoras</title>
+    <title>Bienvenido a Google</title>
     <style>
         body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
+            font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            padding-top: 100px;
+            background-color: #fff;
         }
-        h1 {
-            color: #ffdd00;
+        .logo {
             margin-bottom: 20px;
-            text-transform: uppercase;
         }
-        .phrase {
-            font-style: italic;
-            font-size: 1.2em;
-            margin: 15px 0;
+        .logo span {
+            font-size: 70px;
+            font-weight: bold;
         }
-        .author {
-            font-size: 0.9em;
-            color: #ffdd00;
+        .logo .g { color: #4285f4; }
+        .logo .o1 { color: #ea4335; }
+        .logo .o2 { color: #fbbc05; }
+        .logo .g2 { color: #4285f4; }
+        .logo .l { color: #34a853; }
+        .logo .e { color: #ea4335; }
+        h1 {
+            color: #5f6368;
+            font-size: 24px;
+            margin-bottom: 30px;
         }
-        footer {
-            margin-top: 20px;
-            font-size: 0.8em;
-            color: #cccccc;
+        .search-box {
+            width: 500px;
+            padding: 14px 20px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            font-size: 16px;
+            outline: none;
+            margin-bottom: 20px;
+        }
+        .search-box:hover, .search-box:focus {
+            box-shadow: 0 1px 6px rgba(32,33,36,.28);
+        }
+        .button {
+            background-color: #f8f9fa;
+            border: 1px solid #f8f9fa;
+            border-radius: 4px;
+            color: #3c4043;
+            font-size: 14px;
+            margin: 0 5px;
+            padding: 10px 16px;
+            cursor: pointer;
+        }
+        .button:hover {
+            box-shadow: 0 1px 1px rgba(0,0,0,.1);
+            border: 1px solid #dadce0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Frases Motivadoras</h1>
-        <p class="phrase">"El único modo de hacer un gran trabajo es amar lo que haces."</p>
-        <p class="author">- Steve Jobs</p>
-        <p class="phrase">"El éxito es la suma de pequeños esfuerzos repetidos día tras día."</p>
-        <p class="author">- Robert Collier</p>
-        <p class="phrase">"Cree en ti mismo y en todo lo que eres. Reconoce que hay algo dentro de ti que es más grande que cualquier obstáculo."</p>
-        <p class="author">- Christian D. Larson</p>
-        <p class="phrase">"El futuro pertenece a aquellos que creen en la belleza de sus sueños."</p>
-        <p class="author">- Eleanor Roosevelt</p>
-        <footer>Inspiración para cada día 🌟</footer>
+    <div class="logo">
+        <span class="g">G</span>
+        <span class="o1">o</span>
+        <span class="o2">o</span>
+        <span class="g2">g</span>
+        <span class="l">l</span>
+        <span class="e">e</span>
+    </div>
+    
+    <h1>Bienvenido a Google</h1>
+    
+    <div>
+        <input type="text" class="search-box" placeholder="Buscar en Google">
+    </div>
+    
+    <div>
+        <button class="button">Buscar con Google</button>
+        <button class="button">Voy a tener suerte</button>
     </div>
 </body>
-</html>}
+</html>
+```
