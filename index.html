@@ -85,16 +85,23 @@
 </div>
 
 <script>
-    // Inicializa el contador en 0
-    let contador = 0;
+    // Verifica si ya existe el contador en el almacenamiento local
+    let contador = localStorage.getItem('contadorVisitas');
+    if (!contador) {
+        contador = 0;
+    }
 
-    // Incrementa el contador cada segundo
-    setInterval(() => {
-        contador++;
-        document.getElementById('contador-value').textContent = contador;
-    }, 1000);
+    // Incrementa el contador
+    contador++;
+    localStorage.setItem('contadorVisitas', contador);
+
+    // Muestra el contador en la página
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('contador').textContent = `Visitas: ${contador}`;
+    });
 </script>
-    
+
+<div id="contador"></div>
     
 </body>
 </html>
