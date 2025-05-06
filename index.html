@@ -80,28 +80,21 @@
         <button class="button">Buscar con Google</button>
         <button class="button">Voy a tener suerte</button>
     </div>
+<div id="contador" style="text-align: center; font-size: 24px; margin-top: 20px;">
+    Contador: <span id="contador-value">0</span>
+</div>
 
-    <div id="visit-counter">
-        Esta página ha sido visitada <span id="counter">0</span> veces.
-    </div>
+<script>
+    // Inicializa el contador en 0
+    let contador = 0;
 
-    <script>
-        // Obtener el contador actual desde el almacenamiento local
-        let visitCount = localStorage.getItem('visitCount');
-
-        // Si no existe, inicializarlo a 0
-        if (!visitCount) {
-            visitCount = 0;
-        }
-
-        // Incrementar el contador
-        visitCount++;
-
-        // Guardar el contador actualizado en el almacenamiento local
-        localStorage.setItem('visitCount', visitCount);
-
-        // Mostrar el contador en la página
-        document.getElementById('counter').innerText = visitCount;
-    </script>
+    // Incrementa el contador cada segundo
+    setInterval(() => {
+        contador++;
+        document.getElementById('contador-value').textContent = contador;
+    }, 1000);
+</script>
+    
+    
 </body>
 </html>
