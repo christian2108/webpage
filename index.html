@@ -27,32 +27,6 @@
             font-size: 24px;
             margin-bottom: 30px;
         }
-        .search-box {
-            width: 500px;
-            padding: 14px 20px;
-            border: 1px solid #dfe1e5;
-            border-radius: 24px;
-            font-size: 16px;
-            outline: none;
-            margin-bottom: 20px;
-        }
-        .search-box:hover, .search-box:focus {
-            box-shadow: 0 1px 6px rgba(32,33,36,.28);
-        }
-        .button {
-            background-color: #f8f9fa;
-            border: 1px solid #f8f9fa;
-            border-radius: 4px;
-            color: green;
-            font-size: 14px;
-            margin: 0 5px;
-            padding: 10px 16px;
-            cursor: pointer;
-        }
-        .button:hover {
-            box-shadow: 0 1px 1px rgba(0,0,0,.1);
-            border: 1px solid #dadce0;
-        }
         #visit-counter {
             margin-top: 40px;
             font-size: 18px;
@@ -72,36 +46,30 @@
     
     <h1>Bienvenido a Google</h1>
     
-    <div>
-        <input type="text" class="search-box" placeholder="Buscar en Google">
-    </div>
-    
-    <div>
-        <button class="button">Buscar con Google</button>
-        <button class="button">Voy a tener suerte</button>
-    </div>
-<div id="contador" style="text-align: center; font-size: 24px; margin-top: 20px;">
-    Contador: <span id="contador-value">0</span>
-</div>
+    <p id="visit-counter">Visitas: <span id="visit-count">0</span></p>
 
-<script>
-    // Verifica si ya existe el contador en el almacenamiento local
-    let contador = localStorage.getItem('contadorVisitas');
-    if (!contador) {
-        contador = 0;
-    }
+    <script>
+        // Verificar si la visita es nueva en la sesión
+        const sessionKey = 'visitTracked';
+        if (!sessionStorage.getItem(sessionKey)) {
+            // Incrementar el contador global (almacenado en localStorage)
+            let visitCount = localStorage.getItem('visitCount');
+            if (!visitCount) {
+                visitCount = 0; // Iniciar contador si no existe
+            }
+            visitCount = parseInt(visitCount) + 1; // Incrementar contador
+            localStorage.setItem('visitCount', visitCount);
 
-    // Incrementa el contador
-    contador++;
-    localStorage.setItem('contadorVisitas', contador);
+            // Marcar la visita como registrada en esta sesión
+            sessionStorage.setItem(sessionKey, true);
 
-    // Muestra el contador en la página
-    document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('contador').textContent = `Visitas: ${contador}`;
-    });
-</script>
-
-<div id="contador"></div>
-    
+            // Mostrar el contador actualizado
+            document.getElementById('visit-count').textContent = visitCount;
+        } else {
+            // Si ya se registró la visita en esta sesión, mostrar el contador actual
+            const visitCount = localStorage.getItem('visitCount') || 0;
+            document.getElementById('visit-count').textContent = visitCount;
+        }
+    </script>
 </body>
 </html>
