@@ -85,3 +85,62 @@
     </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página Principal</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f4f4f4;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a mi página principal</h1>
+    <p>Haz clic en el botón para visitar la tabla:</p>
+    <button class="btn" onclick="mostrarTabla()">Ver Tabla</button>
+
+    <div id="tabla" style="display:none; margin-top: 30px;">
+        <font color="red"><h1>mi primera pagina</h1></font>
+        <br><font color="PURPLE"><h1>EJEMPLO DE UNA TABLA 3x2</h1></font><br>
+        <table border style="margin: 0 auto;">
+            <tr>
+                <td bgcolor="RED">NOMBRE</td> 
+                <td>EDAD</td> 
+                <td>SEXO</td>
+            </tr>
+            <tr>
+                <td>CHRISTIAN</td> 
+                <td bgcolor="BLUE">19</td> 
+                <td>MASCULINO</td>
+            </tr>
+        </table>
+        <br>
+        <a href="index.html" style="color: blue; text-decoration: none; font-size: 18px;">Volver a la página principal</a>
+    </div>
+
+    <script>
+        function mostrarTabla() {
+            document.getElementById("tabla").style.display = "block";
+        }
+    </script>
+</body>
+</html>
