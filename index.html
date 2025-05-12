@@ -76,31 +76,49 @@
         <button class="button">Voy a tener suerte</button>
     </div>
 
-    <div>
-        <h2>Visitas: <span id="visit-count">0</span></h2>
-    </div>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de visitas</title>
+</head>
+<body>
+    <h1>Bienvenido a mi página</h1>
+    <p>Visitas únicas: <span id="visit-count">0</span></p>
 
     <script>
-        // Función para verificar si el usuario llegó directamente
-        function isDirectVisit() {
-            return document.referrer === "";
+        // Verifica si el usuario ya ha visitado la página
+        const pageVisited = localStorage.getItem('visited');
+
+        if (!pageVisited) {
+            // No se ha registrado la visita, entonces incrementa el contador
+            fetch('https://your-api-endpoint.com/increment-counter', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    console.log("Contador incrementado exitosamente.");
+                } else {
+                    console.error("Error al incrementar el contador.");
+                }
+            });
+
+            // Guarda en el localStorage que ya se registró la visita
+            localStorage.setItem('visited', 'true');
         }
 
-        // Actualizar contador de visitas solo si es una visita directa
-        if (isDirectVisit()) {
-            // Obtener visitas previas del almacenamiento local
-            let visits = localStorage.getItem('visitCount') || 0;
-            visits = parseInt(visits) + 1;
-
-            // Guardar el nuevo valor en localStorage
-            localStorage.setItem('visitCount', visits);
-
-            // Mostrar el contador actualizado
-            document.getElementById('visit-count').textContent = visits;
-        } else {
-            // Mostrar el contador sin incrementar
-            document.getElementById('visit-count').textContent = localStorage.getItem('visitCount') || 0;
-        }
+        // Opcional: Actualiza el contador mostrado en la página (si tienes una API para obtenerlo)
+        fetch('https://your-api-endpoint.com/get-counter')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('visit-count').textContent = data.count;
+            })
+            .catch(error => {
+                console.error("Error al obtener el contador:", error);
+            });
     </script>
 </body>
 </html>
