@@ -4,108 +4,84 @@
     <title>Combinación de Páginas</title>
     <style>
         body {
-           font-family: Arial, sans-serif;
-           text-align: center;
-           padding-top: 100px;
-           background-color: #fff;
-       }
-       .logo {
-           margin-bottom: 20px;
-       }
-       .logo span {
-           font-size: 70px;
-           font-weight: bold;
-       }
-       .logo .g { color: blue; }
-       .logo .o1 { color: red; }
-       .logo .o2 { color: black; }
-       .logo .g2 { color: orange; }
-       .logo .l { color: pink; }
-       .logo .e { color: lemon; }
-       h1 {
-           color: purple;
-           font-size: 24px;
-           margin-bottom: 30px;
-       }
-       #visit-counter {
-           margin-top: 40px;
-           font-size: 18px;
-           color: gray;
-       }
-       .btn {
-           margin-top: 30px;
-           padding: 10px 20px;
-           font-size: 18px;
-           background-color: blue;
-           color: white;
-           border: none;
-           border-radius: 5px;
-           cursor: pointer;
-       }
-       .btn:hover {
-           background-color: darkblue;
-       }
-       .hidden {
-           display: none;
-       }
-       .visible {
-           display: block;
-       }
-   </style>
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+            background-color: #fff;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .logo span {
+            font-size: 70px;
+            font-weight: bold;
+        }
+        .logo .g { color: blue; }
+        .logo .o1 { color: red; }
+        .logo .o2 { color: black; }
+        .logo .g2 { color: orange; }
+        .logo .l { color: pink; }
+        .logo .e { color: lemon; }
+        h1 {
+            color: purple;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        #visit-counter {
+            margin-top: 40px;
+            font-size: 18px;
+            color: gray;
+        }
+        .btn {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: darkblue;
+        }
+    </style>
 </head>
 <body>
-    <!-- Página Principal -->
-    <div id="pagina1" class="visible">
-        <div class="logo">
-            <span class="g">G</span>
-            <span class="o1">o</span>
-            <span class="o2">o</span>
-            <span class="g2">g</span>
-            <span class="l">l</span>
-            <span class="e">e</span>
-        </div>
-        
-        <h1>Bienvenido a Google</h1>
-        <p id="visit-counter">Visitas: <span id="visit-count">0</span></p>
-        <button class="btn" onclick="mostrarPagina('pagina2')">Ir a la otra página</button>
+    <div class="logo">
+        <span class="g">G</span>
+        <span class="o1">o</span>
+        <span class="o2">o</span>
+        <span class="g2">g</span>
+        <span class="l">l</span>
+        <span class="e">e</span>
     </div>
-
-    <!-- Segunda Página -->
-    <div id="pagina2" class="hidden">
-        <h1>Esta es la Segunda Página</h1>
-        <p>Has navegado desde la página principal.</p>
-        <button class="btn" onclick="mostrarPagina('pagina1')">Regresar a la Página Principal</button>
-    </div>
+    
+    <h1>Bienvenido a Google</h1>
+    <p id="visit-counter">Visitas: <span id="visit-count">0</span></p>
+    <button class="btn" onclick="redireccionar()">Ir a otra página</button>
 
     <script>
         // Verificar si la visita es nueva en la sesión
         const sessionKey = 'visitTracked';
-       if (!sessionStorage.getItem(sessionKey)) {
-           // Incrementar el contador global (almacenado en localStorage)
+        if (!sessionStorage.getItem(sessionKey)) {
             let visitCount = localStorage.getItem('visitCount');
-           if (!visitCount) {
-               visitCount = 0; // Iniciar contador si no existe
+            if (!visitCount) {
+                visitCount = 0;
             }
-           visitCount = parseInt(visitCount) + 1; // Incrementar contador
+            visitCount = parseInt(visitCount) + 1;
             localStorage.setItem('visitCount', visitCount);
-
-           // Marcar la visita como registrada en esta sesión
             sessionStorage.setItem(sessionKey, true);
-
-           // Mostrar el contador actualizado
             document.getElementById('visit-count').textContent = visitCount;
-       } else {
-           // Si ya se registró la visita en esta sesión, mostrar el contador actual
+        } else {
             const visitCount = localStorage.getItem('visitCount') || 0;
-           document.getElementById('visit-count').textContent = visitCount;
-       }
+            document.getElementById('visit-count').textContent = visitCount;
+        }
 
-       // Función para alternar entre páginas
-        function mostrarPagina(paginaId) {
-           document.getElementById('pagina1').classList.add('hidden');
-           document.getElementById('pagina2').classList.add('hidden');
-           document.getElementById(paginaId).classList.remove('hidden');
-       }
-   </script>
+        // Función para redirigir a otra página
+        function redireccionar() {
+            window.location.href = "https://www.example.com"; // Cambia esta URL por la que desees
+        }
+    </script>
 </body>
 </html>
