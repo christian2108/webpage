@@ -16,14 +16,14 @@
             font-size: 70px;
             font-weight: bold;
         }
-        .logo .g { color: #4285f4; }
-        .logo .o1 { color: #ea4335; }
-        .logo .o2 { color: #fbbc05; }
-        .logo .g2 { color: #4285f4; }
-        .logo .l { color: #34a853; }
-        .logo .e { color: #ea4335; }
+        .logo .g { color:RED; }
+        .logo .o1 { color: BLUE; }
+        .logo .o2 { color: BLACK; }
+        .logo .g2 { color: PINK; }
+        .logo .l { color: ORANGE; }
+        .logo .e { color: GREEN; }
         h1 {
-            color: #5f6368;
+            color: BLUE;
             font-size: 24px;
             margin-bottom: 30px;
         }
@@ -75,5 +75,32 @@
         <button class="button">Buscar con Google</button>
         <button class="button">Voy a tener suerte</button>
     </div>
+
+    <div>
+        <h2>Visitas: <span id="visit-count">0</span></h2>
+    </div>
+
+    <script>
+        // Función para verificar si el usuario llegó directamente
+        function isDirectVisit() {
+            return document.referrer === "";
+        }
+
+        // Actualizar contador de visitas solo si es una visita directa
+        if (isDirectVisit()) {
+            // Obtener visitas previas del almacenamiento local
+            let visits = localStorage.getItem('visitCount') || 0;
+            visits = parseInt(visits) + 1;
+
+            // Guardar el nuevo valor en localStorage
+            localStorage.setItem('visitCount', visits);
+
+            // Mostrar el contador actualizado
+            document.getElementById('visit-count').textContent = visits;
+        } else {
+            // Mostrar el contador sin incrementar
+            document.getElementById('visit-count').textContent = localStorage.getItem('visitCount') || 0;
+        }
+    </script>
 </body>
 </html>
