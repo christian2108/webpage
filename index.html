@@ -32,6 +32,19 @@
             font-size: 18px;
             color: gray;
         }
+        .btn {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: darkblue;
+        }
     </style>
 </head>
 <body>
@@ -45,8 +58,11 @@
     </div>
     
     <h1>Bienvenido a Google</h1>
-    
+
     <p id="visit-counter">Visitas: <span id="visit-count">0</span></p>
+
+    <!-- Botón para redirigir a la nueva página -->
+    <button class="btn" onclick="window.location.href='pagina2.html'">Ir a la otra página</button>
 
     <script>
         // Verificar si la visita es nueva en la sesión
