@@ -89,23 +89,27 @@
         Visitas únicas: <span id="visit-count">0</span>
     </div>
 
-    <script>
-        // Verifica si ya se contó la visita en esta sesión
-        if (!sessionStorage.getItem('sessionVisited')) {
-            // Inicializa o incrementa el contador global en localStorage
-            let visitCount = localStorage.getItem('visitCount') || 0;
-            visitCount = parseInt(visitCount) + 1;
-            localStorage.setItem('visitCount', visitCount);
+ <script>
+    // Inicializa el contador desde cero
+    localStorage.setItem('visitCount', 0);
+    sessionStorage.setItem('sessionVisited', false);
 
-            // Marca esta sesión como contada
-            sessionStorage.setItem('sessionVisited', true);
+    // Verifica si ya se contó la visita en esta sesión
+    if (!sessionStorage.getItem('sessionVisited')) {
+        // Inicializa o incrementa el contador global en localStorage
+        let visitCount = localStorage.getItem('visitCount') || 0;
+        visitCount = parseInt(visitCount) + 1;
+        localStorage.setItem('visitCount', visitCount);
 
-            // Muestra el contador en la página
-            document.getElementById('visit-count').textContent = visitCount;
-        } else {
-            // Si ya se contó la visita, muestra el valor existente
-            document.getElementById('visit-count').textContent = localStorage.getItem('visitCount');
-        }
-    </script>
+        // Marca esta sesión como contada
+        sessionStorage.setItem('sessionVisited', true);
+
+        // Muestra el contador en la página
+        document.getElementById('visit-count').textContent = visitCount;
+    } else {
+        // Si ya se contó la visita, muestra el valor existente
+        document.getElementById('visit-count').textContent = localStorage.getItem('visitCount');
+    }
+</script>
 </body>
 </html>
