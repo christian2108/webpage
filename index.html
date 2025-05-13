@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido a Google</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding-top: 100px;
-            background-color: #fff;
+            padding-top: 50px;
+            background-color: #f4f4f9;
         }
         .logo {
             margin-bottom: 20px;
@@ -16,16 +18,16 @@
             font-size: 70px;
             font-weight: bold;
         }
-        .logo .g { color:RED; }
+        .logo .g { color: RED; }
         .logo .o1 { color: BLUE; }
         .logo .o2 { color: BLACK; }
         .logo .g2 { color: PINK; }
         .logo .l { color: ORANGE; }
         .logo .e { color: GREEN; }
         h1 {
-            color: BLUE;
+            color: #333;
             font-size: 24px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .search-box {
             width: 500px;
@@ -53,9 +55,16 @@
             box-shadow: 0 1px 1px rgba(0,0,0,.1);
             border: 1px solid #dadce0;
         }
+        .counter {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #0078D7;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+    <!-- Logo de Google -->
     <div class="logo">
         <span class="g">G</span>
         <span class="o1">o</span>
@@ -65,34 +74,27 @@
         <span class="e">e</span>
     </div>
     
+    <!-- Título y barra de búsqueda -->
     <h1>Bienvenido a Google</h1>
-    
     <div>
         <input type="text" class="search-box" placeholder="Buscar en Google">
     </div>
-    
     <div>
         <button class="button">Buscar con Google</button>
         <button class="button">Voy a tener suerte</button>
     </div>
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador de visitas</title>
-</head>
-<body>
-    <h1>Bienvenido a mi página</h1>
-    <p>Visitas únicas: <span id="visit-count">0</span></p>
+    <!-- Contador de visitas -->
+    <div class="counter">
+        Visitas únicas: <span id="visit-count">0</span>
+    </div>
 
     <script>
         // Verifica si el usuario ya ha visitado la página
         const pageVisited = localStorage.getItem('visited');
 
         if (!pageVisited) {
-            // No se ha registrado la visita, entonces incrementa el contador
+            // No se ha registrado la visita, incrementa el contador en el servidor
             fetch('https://your-api-endpoint.com/increment-counter', {
                 method: 'POST',
                 headers: {
@@ -106,11 +108,11 @@
                 }
             });
 
-            // Guarda en el localStorage que ya se registró la visita
+            // Marca la visita como registrada en el almacenamiento local
             localStorage.setItem('visited', 'true');
         }
 
-        // Opcional: Actualiza el contador mostrado en la página (si tienes una API para obtenerlo)
+        // Actualiza el contador obtenido desde el servidor
         fetch('https://your-api-endpoint.com/get-counter')
             .then(response => response.json())
             .then(data => {
