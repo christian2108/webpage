@@ -90,37 +90,19 @@
     </div>
 
     <script>
-        // Verifica si el usuario ya ha visitado la página
-        const pageVisited = localStorage.getItem('visited');
+        // Inicializa o incrementa el contador en localStorage
+        let visitCount = localStorage.getItem('visitCount');
 
-        if (!pageVisited) {
-            // No se ha registrado la visita, incrementa el contador en el servidor
-            fetch('https://your-api-endpoint.com/increment-counter', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    console.log("Contador incrementado exitosamente.");
-                } else {
-                    console.error("Error al incrementar el contador.");
-                }
-            });
-
-            // Marca la visita como registrada en el almacenamiento local
-            localStorage.setItem('visited', 'true');
+        if (!visitCount) {
+            visitCount = 1; // Primera visita
+        } else {
+            visitCount = parseInt(visitCount) + 1; // Incrementa el contador
         }
 
-        // Actualiza el contador obtenido desde el servidor
-        fetch('https://your-api-endpoint.com/get-counter')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('visit-count').textContent = data.count;
-            })
-            .catch(error => {
-                console.error("Error al obtener el contador:", error);
-            });
+        localStorage.setItem('visitCount', visitCount);
+
+        // Muestra el contador en la página
+        document.getElementById('visit-count').textContent = visitCount;
     </script>
 </body>
 </html>
