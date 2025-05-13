@@ -53,7 +53,32 @@
             box-shadow: 0 1px 1px rgba(0,0,0,.1);
             border: 1px solid #dadce0;
         }
+        .view-counter {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+        .external-link {
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 16px;
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .external-link:hover {
+            text-decoration: underline;
+        }
     </style>
+    <script>
+        // Generador de vistas
+        function incrementarVistas() {
+            let vistas = localStorage.getItem('contadorVistas') || 0;
+            vistas++;
+            localStorage.setItem('contadorVistas', vistas);
+            document.getElementById('viewCount').innerText = vistas;
+        }
+        window.onload = incrementarVistas;
+    </script>
 </head>
 <body>
     <div class="logo">
@@ -75,6 +100,13 @@
         <button class="button">Buscar con Google</button>
         <button class="button">Voy a tener suerte</button>
     </div>
+
+    <!-- Contador de vistas -->
+    <div class="view-counter">
+        Esta página ha sido vista <span id="viewCount">0</span> veces.
+    </div>
+
+    <!-- Enlace a otro sitio web -->
+    <a href="https://www.wikipedia.org" class="external-link" target="_blank">Visitar Wikipedia</a>
 </body>
 </html>
-```
