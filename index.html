@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido a Google</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding-top: 50px;
-            background-color: #f4f4f9;
+            padding-top: 100px;
+            background-color: #fff;
         }
         .logo {
             margin-bottom: 20px;
@@ -18,16 +16,16 @@
             font-size: 70px;
             font-weight: bold;
         }
-        .logo .g { color: RED; }
-        .logo .o1 { color: BLUE; }
-        .logo .o2 { color: BLACK; }
-        .logo .g2 { color: PINK; }
-        .logo .l { color: ORANGE; }
-        .logo .e { color: GREEN; }
+        .logo .g { color: red; }
+        .logo .o1 { color: blue; }
+        .logo .o2 { color: Orange; }
+        .logo .g2 { color: pink; }
+        .logo .l { color: purple; }
+        .logo .e { color: green; }
         h1 {
-            color: #333;
+            color: yellow;
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .search-box {
             width: 500px;
@@ -55,16 +53,9 @@
             box-shadow: 0 1px 1px rgba(0,0,0,.1);
             border: 1px solid #dadce0;
         }
-        .counter {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #0078D7;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
-    <!-- Logo de Google -->
     <div class="logo">
         <span class="g">G</span>
         <span class="o1">o</span>
@@ -74,51 +65,16 @@
         <span class="e">e</span>
     </div>
     
-    <!-- Título y barra de búsqueda -->
     <h1>Bienvenido a Google</h1>
+    
     <div>
         <input type="text" class="search-box" placeholder="Buscar en Google">
     </div>
-   <div>
-    <button class="button">Buscar con Google</button>
-    <button class="button">Voy a tener suerte</button>
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect Page</title>
-</head>
-<body>
-    <a href="file:///C:/Users/Laboratorio%20Info/Desktop/misegundapagina.html">Ir a otra página</a>
-</body>
-</html>
-    <!-- Contador de visitas -->
-    <div class="counter">
-        Visitas únicas: <span id="visit-count">0</span>
+    
+    <div>
+        <button class="button">Buscar con Google</button>
+        <button class="button">Voy a tener suerte</button>
     </div>
-
- <script>
-    // Inicializa el contador desde cero
-    localStorage.setItem('visitCount', 0);
-    sessionStorage.setItem('sessionVisited', false);
-
-    // Verifica si ya se contó la visita en esta sesión
-    if (!sessionStorage.getItem('sessionVisited')) {
-        // Inicializa o incrementa el contador global en localStorage
-        let visitCount = localStorage.getItem('visitCount') || 0;
-        visitCount = parseInt(visitCount) + 1;
-        localStorage.setItem('visitCount', visitCount);
-
-        // Marca esta sesión como contada
-        sessionStorage.setItem('sessionVisited', true);
-
-        // Muestra el contador en la página
-        document.getElementById('visit-count').textContent = visitCount;
-    } else {
-        // Si ya se contó la visita, muestra el valor existente
-        document.getElementById('visit-count').textContent = localStorage.getItem('visitCount');
-    }
-</script>
 </body>
 </html>
+```
