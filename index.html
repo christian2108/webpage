@@ -1,40 +1,126 @@
+
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Mi Página Mejorada</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background-image: url('https://midu.dev/images/wallpapers/una-taza-de-javascript.png');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-shadow: 1px 1px 4px #000;
-    }
-    .contenido {
-      background: rgba(0,0,0,0.55);
-      padding: 40px;
-      border-radius: 15px;
-      max-width: 600px;
-      margin: 60px auto;
-      box-shadow: 0 0 18px 2px rgba(0,0,0,0.4);
-    }
-    h1, p {
-      margin: 0 0 20px 0;
-    }
-  </style>
+<title>Bienvenido a Google</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+text-align: center;
+padding-top: 100px;
+background-color: #fff;
+}
+.logo {
+margin-bottom: 20px;
+}
+.logo span {
+font-size: 70px;
+font-weight: bold;
+}
+.logo .g { color: red; }
+.logo .o1 { color: blue; }
+.logo .o2 { color: Orange; }
+.logo .g2 { color: pink; }
+.logo .l { color: purple; }
+.logo .e { color: green; }
+h1 {
+color: red;
+font-size: 24px;
+margin-bottom: 30px;
+}
+.search-box {
+width: 500px;
+padding: 14px 20px;
+border: 1px solid #dfe1e5;
+border-radius: 24px;
+font-size: 16px;
+outline: none;
+margin-bottom: 20px;
+}
+.search-box:hover, .search-box:focus {
+box-shadow: 0 1px 6px rgba(32,33,36,.28);
+}
+.button {
+background-color: pink;
+border: 1px solid #f8f9fa;
+border-radius: 4px;
+color: red;
+font-size: 14px;
+margin: 0 5px;
+padding: 10px 16px;
+cursor: pointer;
+}
+.button:hover {
+box-shadow: 0 1px 1px rgba(0,0,0,.1);
+border: 1px solid #dadce0;
+}
+.view-counter {
+margin-top: 20px;
+font-size: 18px;
+color: #555;
+}
+.external-link {
+margin-top: 20px;
+display: inline-block;
+font-size: 16px;
+color: #1a73e8;
+text-decoration: none;
+}
+.external-link:hover {
+text-decoration: underline;
+}
+</style>
+<script>
+	// Generador de vistas para usuarios únicos
+	function incrementarVistas() {
+    	// Verificar si el usuario ya fue contado
+    	let usuarioContado = localStorage.getItem('usuarioContado');
+
+    	if (!usuarioContado) {
+        	// Si no ha sido contado, incrementar el contador
+        	let vistas = localStorage.getItem('contadorVistas') || 0;
+        	vistas++;
+        	localStorage.setItem('contadorVistas', vistas);
+
+        	// Marcar al usuario como contado
+        	localStorage.setItem('usuarioContado', 'true');
+    	}
+
+    	// Mostrar el contador actualizado
+    	let vistasActuales = localStorage.getItem('contadorVistas');
+    	document.getElementById('viewCount').innerText = vistasActuales;
+	}
+
+	window.onload = incrementarVistas;
+</script>
 </head>
 <body>
-  <div class="contenido">
-    <h1>¡Bienvenido/a a mi página mejorada!</h1>
-    <p>Ahora tiene un fondo 4K espectacular. Puedes personalizar la imagen cambiando la URL en la propiedad background-image del CSS.</p>
-  </div>
+<div class="logo">
+<span class="g">G</span>
+<span class="o1">o</span>
+<span class="o2">o</span>
+<span class="g2">g</span>
+<span class="l">l</span>
+<span class="e">e</span>
+</div>
+<h1>Bienvenido a Google</h1>
+<div>
+<input type="text" class="search-box" placeholder="Buscar en Google">
+</div>
+<div>
+<button class="button">Buscar con Google</button>
+<button class="button">Voy a tener suerte</button>
+</div>
+
+<!-- Contador de vistas -->
+<div class="view-counter">
+Esta página ha sido vista <span id="viewCount">0</span> veces.
+</div>
+
+<!-- Enlace a otro sitio web -->
+<a href="https://www.wikipedia.org" class="external-link" target="_blank">Visitar Wikipedia</a>
 </body>
 </html>
+
 
 
