@@ -104,18 +104,39 @@
       text-decoration: underline;
     }
   </style>
-  <script>
-   // Contador de visitas usando localStorage
-    const visitKey = 'visitCount';
-    let count = localStorage.getItem(visitKey);
-    if (!count) {
-      count = 1;
-    } else {
-      count = parseInt(count) + 1;
-    }
-    localStorage.setItem(visitKey, count);
-    document.getElementById('visit-count').innerText = count;
-  </script>
+ <script>
+// Checa si el usuario ya fue contado antes usando localStorage
+const contadorKey = 'contadorVistasWebpage';
+const usuarioContadoKey = 'usuarioContadoWebpage';
+
+// Obtén el contador actual de localStorage o empieza en 0
+let contador = parseInt(localStorage.getItem(contadorKey)) || 0;
+
+// Solo cuenta si el usuario no ha sido contado antes
+if (!localStorage.getItem(usuarioContadoKey)) {
+    contador++;
+    localStorage.setItem(contadorKey, contador);
+    localStorage.setItem(usuarioContadoKey, 'true');
+}
+
+// Muestra el contador en la página
+function mostrarContador() {
+    let div = document.createElement('div');
+    div.style.position = 'fixed';
+    div.style.bottom = '10px';
+    div.style.right = '10px';
+    div.style.background = 'rgba(0,0,0,0.7)';
+    div.style.color = 'white';
+    div.style.padding = '8px 16px';
+    div.style.borderRadius = '8px';
+    div.style.fontSize = '16px';
+    div.style.zIndex = '1000';
+    div.innerText = 'Vistas únicas: ' + contador;
+    document.body.appendChild(div);
+}
+
+window.onload = mostrarContador;
+</script>
 </head>
 <body>
   <div class="glass-container">
