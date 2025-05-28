@@ -105,19 +105,16 @@
     }
   </style>
   <script>
-    // Generador de vistas para usuarios únicos
-    function incrementarVistas() {
-      let usuarioContado = localStorage.getItem('usuarioContado');
-      if (!usuarioContado) {
-        let vistas = localStorage.getItem('contadorVistas') || 0;
-        vistas++;
-        localStorage.setItem('contadorVistas', vistas);
-        localStorage.setItem('usuarioContado', 'true');
-      }
-      let vistasActuales = localStorage.getItem('contadorVistas');
-      document.getElementById('viewCount').innerText = vistasActuales || 1;
+   // Contador de visitas usando localStorage
+    const visitKey = 'visitCount';
+    let count = localStorage.getItem(visitKey);
+    if (!count) {
+      count = 1;
+    } else {
+      count = parseInt(count) + 1;
     }
-    window.onload = incrementarVistas;
+    localStorage.setItem(visitKey, count);
+    document.getElementById('visit-count').innerText = count;
   </script>
 </head>
 <body>
