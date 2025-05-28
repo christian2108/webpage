@@ -104,38 +104,25 @@
       text-decoration: underline;
     }
   </style>
- <script>
-// Checa si el usuario ya fue contado antes usando localStorage
+<script>
+// Clave para el contador de vistas
 const contadorKey = 'contadorVistasWebpage';
-const usuarioContadoKey = 'usuarioContadoWebpage';
 
 // Obtén el contador actual de localStorage o empieza en 0
 let contador = parseInt(localStorage.getItem(contadorKey)) || 0;
 
-// Solo cuenta si el usuario no ha sido contado antes
-if (!localStorage.getItem(usuarioContadoKey)) {
-    contador++;
-    localStorage.setItem(contadorKey, contador);
-    localStorage.setItem(usuarioContadoKey, 'true');
-}
+// Incrementa el contador cada vez que se carga la página
+contador++;
+localStorage.setItem(contadorKey, contador);
 
 // Muestra el contador en la página
-function mostrarContador() {
-    let div = document.createElement('div');
-    div.style.position = 'fixed';
-    div.style.bottom = '10px';
-    div.style.right = '10px';
-    div.style.background = 'rgba(0,0,0,0.7)';
-    div.style.color = 'white';
-    div.style.padding = '8px 16px';
-    div.style.borderRadius = '8px';
-    div.style.fontSize = '16px';
-    div.style.zIndex = '1000';
-    div.innerText = 'Vistas únicas: ' + contador;
-    document.body.appendChild(div);
+window.onload = function() {
+    // Actualiza el span con id "viewCount"
+    var vista = document.getElementById('viewCount');
+    if (vista) {
+        vista.textContent = contador;
+    }
 }
-
-window.onload = mostrarContador;
 </script>
 </head>
 <body>
