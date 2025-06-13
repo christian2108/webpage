@@ -1,33 +1,202 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Te Amo</title>
-<style>
-body {
-background-color: pink;
-text-align: center;
-font-family: 'Arial'
-, sans-serif;
-color: white;
-}
-h1 {
-font-size: 50px;
-animation: latido 1s infinite alternate;
-}
-@keyframes latido {
-from { transform: scale(1); }
-to { transform: scale(1.2); }
-}
-.corazon {
-font-size: 100px;
-color: red;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo Mi Pulguita Linda</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff6b9d, #ffc3e1, #ff9a9e);
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .mensaje {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .titulo {
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            font-weight: bold;
+            animation: latir 2s ease-in-out infinite;
+        }
+
+        .subtitulo {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes latir {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .corazon {
+            position: absolute;
+            font-size: 2rem;
+            color: #ff1744;
+            animation: flotar 3s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes flotar {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .corazon:nth-child(odd) {
+            animation-duration: 4s;
+            color: #e91e63;
+        }
+
+        .corazon:nth-child(even) {
+            animation-duration: 3.5s;
+            color: #ff4081;
+        }
+
+        .corazon:nth-child(3n) {
+            animation-duration: 2.5s;
+            color: #ff1744;
+        }
+
+        .corazon-grande {
+            position: absolute;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: pulso 4s ease-in-out infinite;
+        }
+
+        @keyframes pulso {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.1;
+            }
+            50% {
+                transform: scale(1.2) rotate(180deg);
+                opacity: 0.3;
+            }
+        }
+
+        .estrella {
+            position: absolute;
+            color: #fff;
+            font-size: 1rem;
+            animation: brillar 2s ease-in-out infinite;
+        }
+
+        @keyframes brillar {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+    </style>
 </head>
 <body>
-<h1>Te Amo </h1>
-<p class="corazon"> </p>
+    <div class="mensaje">
+        <h1 class="titulo">💕 Te Amo Mi Pulguita Linda 💕</h1>
+        <p class="subtitulo"> GRACIAS POR HACERME MUY FELIZ , Eres mi Pincesa ❤️</p>
+    </div>
+
+    <script>
+        // Función para crear corazones que caen
+        function crearCorazon() {
+            const corazon = document.createElement('div');
+            corazon.className = 'corazon';
+            corazon.innerHTML = '❤️';
+            corazon.style.left = Math.random() * 100 + '%';
+            corazon.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(corazon);
+
+            // Eliminar el corazón después de la animación
+            setTimeout(() => {
+                if (corazon.parentNode) {
+                    corazon.parentNode.removeChild(corazon);
+                }
+            }, 4000);
+        }
+
+        // Función para crear corazones grandes de fondo
+        function crearCorazonGrande() {
+            const corazon = document.createElement('div');
+            corazon.className = 'corazon-grande';
+            corazon.innerHTML = '💖';
+            corazon.style.left = Math.random() * 100 + '%';
+            corazon.style.top = Math.random() * 100 + '%';
+            corazon.style.animationDelay = Math.random() * 4 + 's';
+            document.body.appendChild(corazon);
+        }
+
+        // Función para crear estrellas
+        function crearEstrella() {
+            const estrella = document.createElement('div');
+            estrella.className = 'estrella';
+            estrella.innerHTML = '✨';
+            estrella.style.left = Math.random() * 100 + '%';
+            estrella.style.top = Math.random() * 100 + '%';
+            estrella.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(estrella);
+        }
+
+        // Crear corazones grandes de fondo
+        for (let i = 0; i < 8; i++) {
+            crearCorazonGrande();
+        }
+
+        // Crear estrellas
+        for (let i = 0; i < 15; i++) {
+            crearEstrella();
+        }
+
+        // Crear corazones que caen continuamente
+        setInterval(crearCorazon, 300);
+
+        // Agregar más corazones al hacer clic
+        document.addEventListener('click', function(e) {
+            for (let i = 0; i < 5; i++) {
+                const corazon = document.createElement('div');
+                corazon.innerHTML = '💕';
+                corazon.style.position = 'absolute';
+                corazon.style.left = e.clientX + 'px';
+                corazon.style.top = e.clientY + 'px';
+                corazon.style.fontSize = '1.5rem';
+                corazon.style.color = '#ff1744';
+                corazon.style.pointerEvents = 'none';
+                corazon.style.animation = 'flotar 2s ease-out forwards';
+                corazon.style.animationDelay = i * 0.1 + 's';
+                document.body.appendChild(corazon);
+
+                setTimeout(() => {
+                    if (corazon.parentNode) {
+                        corazon.parentNode.removeChild(corazon);
+                    }
+                }, 2000);
+            }
+        });
+    </script>
 </body>
 </html>
